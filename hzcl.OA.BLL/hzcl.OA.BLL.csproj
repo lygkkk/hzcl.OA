@@ -40,7 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInfoService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\hzcl.OA.DALFactory\hzcl.OA.DALFactory.csproj">
+      <Project>{05260A49-08EE-4FC8-BCD7-464B6F3BA19E}</Project>
+      <Name>hzcl.OA.DALFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\hzcl.OA.IBLL\hzcl.OA.IBLL.csproj">
+      <Project>{30575491-1121-4D0E-BC1A-ADE4E2B9C20D}</Project>
+      <Name>hzcl.OA.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\hzcl.OA.IDAL\hzcl.OA.IDAL.csproj">
+      <Project>{781FFC4A-5E35-410A-AEFD-9D43723EE6D6}</Project>
+      <Name>hzcl.OA.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\hzcl.OA.Model\hzcl.OA.Model.csproj">
+      <Project>{7369BC1C-7EC8-4E8E-B0F5-BB13B5029FD4}</Project>
+      <Name>hzcl.OA.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -40,7 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBaseService.cs" />
+    <Compile Include="IUserInfoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\hzcl.OA.IDAL\hzcl.OA.IDAL.csproj">
+      <Project>{781FFC4A-5E35-410A-AEFD-9D43723EE6D6}</Project>
+      <Name>hzcl.OA.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\hzcl.OA.Model\hzcl.OA.Model.csproj">
+      <Project>{7369BC1C-7EC8-4E8E-B0F5-BB13B5029FD4}</Project>
+      <Name>hzcl.OA.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

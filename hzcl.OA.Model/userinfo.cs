@@ -14,8 +14,13 @@ namespace hzcl.OA.Model
     
     public partial class userinfo
     {
-        public string id { get; set; }
-        public string Name { get; set; }
-        public string Age { get; set; }
+        public int ID { get; set; }
+        public string UserName { get; set; }
+        public string UserPass { get; set; }
+        public System.DateTime RegTime { get; set; }
+        public Nullable<byte> DelFlag { get; set; }
+        public string Remark { get; set; }
+        public string Sort { get; set; }
+        public Nullable<System.DateTime> Modified { get; set; }
     }
 }
