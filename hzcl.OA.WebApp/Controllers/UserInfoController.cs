@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using hzcl.OA.BLL;
+using hzcl.OA.Model;
 using hzcl.OA.Model.EnumType;
 using Newtonsoft.Json;
 
@@ -39,6 +40,55 @@ namespace hzcl.OA.WebApp.Controllers
                     RegTime = u.RegTime
                 };
             return Json(new {rows = temp, total = pageCount});
+        }
+
+        #endregion
+
+        #region 删除用户书记录
+
+        public ActionResult DeleteUserInfo()
+        {
+            string strId = Request["strId"];
+            string[] strIds = strId.Split(',');
+            List<int> list = new List<int>();
+            foreach (string s in strIds)
+            {
+                list.Add(Convert.ToInt32(s));
+            }
+
+            if (userInfoService.DeleteTntities(list))
+            {
+                return Content("ok");
+            }
+            else
+            {
+                return Content("no");
+            }
+
+        }
+
+        #endregion
+
+        #region 添加用户信息
+
+        public ActionResult AddUserInfo(userinfo userinfo)
+        {
+            userinfo.DelFlag = 0;
+            userinfo.RegTime = DateTime.Now;
+            userinfo.Modified = DateTime.Now;
+            userInfoService.AddEntity(userinfo);
+            return Content("ok");
+        }
+
+        #endregion
+
+        #region 显示要修改的用户信息
+
+        public ActionResult ShowEditInfo()
+        {
+            int id = int.Parse(Request["id"]);
+            var userInfo =  userInfoService.LoadEntities(u => u.ID == id).FirstOrDefault();
+            return Json(userInfo, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

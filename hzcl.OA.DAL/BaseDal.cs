@@ -9,8 +9,8 @@ namespace hzcl.OA.DAL
     public class BaseDal<T> where T : class, new()
 
     {
-        hzclEntities db = new hzclEntities();
-
+        //hzclEntities db = new hzclEntities();
+        DbContext db = DAL.DBContextFactory.CreateDbContext();
         /// <summary>
         /// 新增数据
         /// </summary>

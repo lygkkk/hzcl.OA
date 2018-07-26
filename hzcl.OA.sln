@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hzcl.OA.BLL", "hzcl.OA.BLL\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hzcl.OA.WebApp", "hzcl.OA.WebApp\hzcl.OA.WebApp.csproj", "{00D751BF-90D5-43C5-845F-174D5B2C906E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{8F61CAEB-2EC7-4989-B1CF-CA6A0DADFD76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{00D751BF-90D5-43C5-845F-174D5B2C906E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00D751BF-90D5-43C5-845F-174D5B2C906E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00D751BF-90D5-43C5-845F-174D5B2C906E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F61CAEB-2EC7-4989-B1CF-CA6A0DADFD76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F61CAEB-2EC7-4989-B1CF-CA6A0DADFD76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F61CAEB-2EC7-4989-B1CF-CA6A0DADFD76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F61CAEB-2EC7-4989-B1CF-CA6A0DADFD76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
