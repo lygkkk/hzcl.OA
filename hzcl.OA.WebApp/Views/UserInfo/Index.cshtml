@@ -191,11 +191,12 @@
             $.post("/UserInfo/ShowEditInfo",
                 { "id": id },
                 function(data) {
+                    $("#txtID").val(data.ID);
                     $("#txtUserNmae").val(data.UserName);
                     $("#txtUserPass").val(data.UserPass);
                     $("#txtRemark").val(data.Remark);
                     $("#txtSort").val(data.Sort);
-                    $("#txtRegTime").val(data.RegTime);
+                    $("#txtRegTime").val(formatDate(data.RegTime));
                     $("#txtDelFlag").val(data.DelFlag);
                 });
             $("#editDiv").css("display", "block");
@@ -237,6 +238,23 @@
 
             });
         }
+
+        function afterEdit(data) {
+            if (data == "ok") {
+                $("#editDiv").dialog("close");
+                $("#tt").datagrid("reload");
+            } else {
+                $.messager.alert("提示", "修改失败！", "error");
+            }
+        }
+
+
+        function formatDate(valDate) {
+            var date = new Date(parseInt(valDate.replace("/Date(", "").replace(")/", ""), 10));
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate;
+        }
     </script>
 </head>
 <body>
@@ -264,11 +282,12 @@
 <div id="editDiv">
     @using (Ajax.BeginForm("EditUserInfo", "UserInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterEdit" }, new { id = "editForm" }))
     {
+        <input type="hidden" name="ID" id ="txtID"/>
         <input type="hidden" name="RegTime" id="txtRegTime"/>
         <input type="hidden" name="DelFlag" id="txtDelFlag"/>
         <table>
             <tr><td>用户名</td><td><input type="text" name="UserName" id="txtUserNmae"/></td></tr>
-            <tr><td>密码</td><td><input type="password" name="UserPass" id="txtUserPass"/></td></tr>
+            <tr><td>密码</td><td><input type="text" name="UserPass" id="txtUserPass"/></td></tr>
             <tr><td>备注</td><td><input type="text" name="Remark" id="txtRemark"/></td></tr>
             <tr><td>排序</td><td><input type="text" name="Sort" id="txtSort"/></td></tr>
         </table>

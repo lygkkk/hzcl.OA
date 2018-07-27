@@ -13,7 +13,9 @@ namespace hzcl.OA.WebApp.Controllers
     public class UserInfoController : Controller
     {
         // GET: UserInfo
-        IBLL.IUserInfoService userInfoService = new UserInfoService();
+        //IBLL.IUserInfoService userInfoService = new UserInfoService();
+        private IBLL.IUserInfoService userInfoService { get; set; }
+    
         public ActionResult Index()
         {
             //bll.LoadEntities(c => c.)
@@ -89,6 +91,24 @@ namespace hzcl.OA.WebApp.Controllers
             int id = int.Parse(Request["id"]);
             var userInfo =  userInfoService.LoadEntities(u => u.ID == id).FirstOrDefault();
             return Json(userInfo, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
+        #region 完成用户信息修改
+
+        public ActionResult EditUserInfo(userinfo userinfo)
+        {
+            userinfo.Modified = DateTime.Now;
+            if (userInfoService.EditEntity(userinfo))
+            {
+                return Content("ok");
+            }
+            else
+            {
+                return Content("no");
+            }
+
         }
 
         #endregion
