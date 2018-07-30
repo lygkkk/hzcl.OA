@@ -3,10 +3,14 @@
 
   <object  type="hzcl.OA.WebApp.Controllers.UserInfoController, hzcl.OA.WebApp" singleton="false" >
     <property name="userInfoService" ref="UserInfoService" />
-  <!--<property name="RoleInfoService" ref="RoleInfoService" />
-    <property name="ActionInfoService" ref="ActionInfoService" />
-    <property name="R_UserInfo_ActionInfoService" ref="R_UserInfo_ActionInfoService" />-->
   </object>
+
+  <object  type="hzcl.OA.WebApp.Controllers.LoginController, hzcl.OA.WebApp" singleton="false" >
+    <property name="userInfoService" ref="UserInfoService" />
+  </object>
+  
+  
+  
 
   <!--<object name="UserInfoService" type="hzcl.OA.BLL.UserInfoService, hzcl.OA.BLL" singleton="false"></object>-->
   

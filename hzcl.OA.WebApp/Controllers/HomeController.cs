@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace hzcl.OA.WebApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController //Controller
     {
         public ActionResult Index()
         {
@@ -24,6 +24,11 @@ namespace hzcl.OA.WebApp.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult HomePage()
+        {
             return View();
         }
     }

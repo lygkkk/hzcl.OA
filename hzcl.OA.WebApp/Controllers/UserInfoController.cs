@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace hzcl.OA.WebApp.Controllers
 {
-    public class UserInfoController : Controller
+    public class UserInfoController : BaseController //Controller
     {
         // GET: UserInfo
         //IBLL.IUserInfoService userInfoService = new UserInfoService();

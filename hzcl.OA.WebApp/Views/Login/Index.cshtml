@@ -1,0 +1,46 @@
+﻿@using System.Activities.Expressions
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OA后台管理系统</title>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        function ChekcValiDate() {
+            $("#img").attr("src", $("#img").attr("src") + 1);
+        }
+
+        function afterLogin(data) {
+            var serverData = data.split(":");
+            if (serverData[0] == "ok") {
+                window.location.href = "/home/index";
+            } else {
+                $("#errorMsg").css("display", "block");
+                $("#errorMsg").text(serverData[1]);
+                ChekcValiDate();
+            }
+        }
+    </script>
+</head>
+<body>
+@using (Ajax.BeginForm("UserLogin", "Login", new{}, new AjaxOptions(){HttpMethod = "post", OnSuccess = "afterLogin", LoadingElementId = "div1"}, new {id = "loginForm"})) { 
+    <div>
+        用户名<input type="text" name="UserName"/><br/>
+        密码<input type="password" name="UserPass"/><br/>
+        验证码<input type="text" name="vCode"/><br/>
+        
+        <img id="img" src="/Login/ShowValiDateCode?id=1"/><a href="javascript:void(0)" onclick="ChekcValiDate();return false;">刷新</a>
+        <input type="submit" id="btnLogin" value="登录"/>
+        <span id="errorMsg" style="display: none">登录失败</span>
+        <div id="div1" style="display: none">正在登陆请稍等.......</div>
+    </div>
+}
+</body>
+</html>
