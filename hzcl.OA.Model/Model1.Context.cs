@@ -26,5 +26,9 @@ namespace hzcl.OA.Model
         }
     
         public virtual DbSet<userinfo> userinfo { get; set; }
+        public virtual DbSet<ActionInfo> ActionInfo { get; set; }
+        public virtual DbSet<DepartMent> DepartMent { get; set; }
+        public virtual DbSet<RoleInfo> RoleInfo { get; set; }
+        public virtual DbSet<R_UserInfo_ActionInfo> R_UserInfo_ActionInfo { get; set; }
     }
 }

@@ -145,7 +145,7 @@
     function f_open(url, title, icon) {
         var win = $.ligerDialog.open(
             {
-                height: 500, url: url, width: 600, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
+                height: 500, url: url, width: 800, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
                     {
                         text: '确定', onclick: function (item, Dialog, index) {
                             win.hide();
@@ -160,8 +160,8 @@
         return win;
     }
     var links = [
-        { icon: '/Content/images/3DSMAX.png', title: '填写周报', url: '../case/week.htm' },
-        { icon: '/Content/images/3DSMAX.png', title: 'treegrid', url: '../grid/treegrid/treegrid.htm' },
+        { icon: '/Content/images/3DSMAX.png', title: '用户管理', url: '/UserInfo/Index' },
+        { icon: '/Content/images/3DSMAX.png', title: '角色管理', url: '/RoleInfo/Index' },
         { icon: '/Content/images/3DSMAX.png', title: '多表头', url: '../grid/mulheader/grid2.htm' },
         { icon: '/Content/images/Program Files Folder.png', title: '固定列', url: '../grid/frozen/frozengrid.htm' },
         { icon: '/Content/images/Program Files Folder.png', title: '可拖动', url: '../base/drag.htm' },

@@ -12,15 +12,20 @@ namespace hzcl.OA.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class userinfo
+    public partial class ActionInfo
     {
         public int ID { get; set; }
-        public string UserName { get; set; }
-        public string UserPass { get; set; }
-        public System.DateTime RegTime { get; set; }
-        public byte DelFlag { get; set; }
+        public Nullable<System.DateTime> RegTime { get; set; }
+        public Nullable<short> DelFlag { get; set; }
+        public Nullable<System.DateTime> ModifiedOn { get; set; }
         public string Remark { get; set; }
+        public string Url { get; set; }
+        public string HttpMethod { get; set; }
+        public string ActionMethodName { get; set; }
         public string Sort { get; set; }
-        public Nullable<System.DateTime> Modified { get; set; }
+        public Nullable<short> ActionTypeName { get; set; }
+        public string MenuIcon { get; set; }
+        public Nullable<int> IconWeidth { get; set; }
+        public Nullable<int> IconHeight { get; set; }
     }
 }

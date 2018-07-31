@@ -7,7 +7,7 @@ using hzcl.OA.Model;
 
 namespace hzcl.OA.DAL
 {
-    public class UserInfoDal : BaseDal<userinfo>, IUserInfoDal
+    public partial class UserInfoDal : BaseDal<userinfo>, IUserInfoDal
     {
         
     }

@@ -12,15 +12,13 @@ namespace hzcl.OA.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class userinfo
+    public partial class DepartMent
     {
         public int ID { get; set; }
-        public string UserName { get; set; }
-        public string UserPass { get; set; }
-        public System.DateTime RegTime { get; set; }
-        public byte DelFlag { get; set; }
-        public string Remark { get; set; }
-        public string Sort { get; set; }
-        public Nullable<System.DateTime> Modified { get; set; }
+        public string DepName { get; set; }
+        public int ParentId { get; set; }
+        public string TreePath { get; set; }
+        public Nullable<int> Level { get; set; }
+        public Nullable<bool> IsLeaf { get; set; }
     }
 }

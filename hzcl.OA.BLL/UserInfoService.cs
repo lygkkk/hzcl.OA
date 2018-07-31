@@ -6,7 +6,7 @@ using hzcl.OA.Model;
 
 namespace hzcl.OA.BLL
 {
-    public class UserInfoService : BaseService<userinfo>, IUserInfoService
+    public partial class UserInfoService : BaseService<userinfo>, IUserInfoService
     {
         /// <summary>
         /// 批量删除数据
@@ -24,9 +24,9 @@ namespace hzcl.OA.BLL
             return this.CurrentDbSession.SaveChanges();
         }
 
-        public override void SetCurrentDal()
-        {
-            CurrentDal = this.CurrentDbSession.UserInfoDal;
-        }
+        //public override void SetCurrentDal()
+        //{
+        //    CurrentDal = this.CurrentDbSession.userinfoDal;
+        //}
     }
 }

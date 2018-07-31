@@ -7,16 +7,16 @@ namespace hzcl.OA.DALFactory
     /// <summary>
     /// 通过反射创建类的实例
     /// </summary>
-    public class AbstractFactory
+    public partial class AbstractFactory
     {
         private static readonly string Assemblypath = ConfigurationManager.AppSettings["Assemblypath"];
         private static readonly string NameSpace = ConfigurationManager.AppSettings["NameSpace"];
 
-        public static IUserInfoDal CreateUserInfoDal()
-        {
-            string fullClassName = NameSpace + ".UserInfoDal";
-            return CreateInstance(fullClassName) as IUserInfoDal;
-        }
+        //public static IUserInfoDal CreateUserInfoDal()
+        //{
+        //    string fullClassName = NameSpace + ".UserInfoDal";
+        //    return CreateInstance(fullClassName) as IUserInfoDal;
+        //}
 
         private static object CreateInstance(string classNmae)
         {

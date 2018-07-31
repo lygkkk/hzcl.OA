@@ -8,11 +8,11 @@ namespace hzcl.OA.DALFactory
     /// <summary>
     /// 数据会话层 就是一个工厂类
     /// </summary>
-    public class DBSession : IDBSession
+    public partial class DBSession : IDBSession
     {
 
         //hzclEntities db = new hzclEntities();
-        private IUserInfoDal _userInfoDal;
+        //private IUserInfoDal _userInfoDal;
 
         public DbContext DbContext
         {
@@ -22,22 +22,22 @@ namespace hzcl.OA.DALFactory
             } 
         }
 
-        public IUserInfoDal UserInfoDal
-        {
-            get
-            {
-                if (_userInfoDal == null)
-                {
-                    //_userInfoDal = new UserInfoDal();
-                    _userInfoDal = AbstractFactory.CreateUserInfoDal();
+        //public IUserInfoDal UserInfoDal
+        //{
+        //    get
+        //    {
+        //        if (_userInfoDal == null)
+        //        {
+        //            //_userInfoDal = new UserInfoDal();
+        //            _userInfoDal = AbstractFactory.CreateUserInfoDal();
 
-                }
+        //        }
 
-                return _userInfoDal;
-            }
+        //        return _userInfoDal;
+        //    }
 
-            set { _userInfoDal = value; }
-        }
+        //    set { _userInfoDal = value; }
+        //}
 
         public bool SaveChanges()
         {

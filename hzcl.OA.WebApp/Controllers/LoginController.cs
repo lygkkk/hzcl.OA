@@ -13,6 +13,7 @@ namespace hzcl.OA.WebApp.Controllers
     public class LoginController :  Controller
     {
         private IBLL.IUserInfoService userInfoService { get; set; }
+        //private IBLL.IUserInfoService userInfoService = new UserInfoService();
 
         // GET: Login
         public ActionResult Index()

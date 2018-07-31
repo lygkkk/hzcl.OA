@@ -5,6 +5,56 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="hzclModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActionInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegTime" Type="datetime" />
+          <Property Name="DelFlag" Type="smallint" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="HttpMethod" Type="nvarchar" MaxLength="4" />
+          <Property Name="ActionMethodName" Type="nvarchar" MaxLength="256" />
+          <Property Name="Sort" Type="nvarchar(max)" />
+          <Property Name="ActionTypeName" Type="smallint" />
+          <Property Name="MenuIcon" Type="nvarchar" MaxLength="256" />
+          <Property Name="IconWeidth" Type="int" />
+          <Property Name="IconHeight" Type="int" />
+        </EntityType>
+        <EntityType Name="DepartMent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="TreePath" Type="nvarchar" MaxLength="50" />
+          <Property Name="Level" Type="int" />
+          <Property Name="IsLeaf" Type="bit" />
+        </EntityType>
+        <EntityType Name="R_UserInfo_ActionInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserInfoID" Type="int" />
+          <Property Name="ActionInfoID" Type="int" />
+          <Property Name="IsPass" Type="smallint" />
+        </EntityType>
+        <EntityType Name="RoleInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="32" />
+          <Property Name="DelFlag" Type="smallint" />
+          <Property Name="RegTime" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="256" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="sort" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="userinfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -14,11 +64,15 @@
           <Property Name="UserPass" Type="nvarchar" MaxLength="16" Nullable="false" />
           <Property Name="Modified" Type="datetime" />
           <Property Name="RegTime" Type="datetime" Nullable="false" />
-          <Property Name="DelFlag" Type="smallint" />
+          <Property Name="DelFlag" Type="smallint" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="256" />
           <Property Name="Sort" Type="nvarchar(max)" />
         </EntityType>
         <EntityContainer Name="hzclModelStoreContainer">
+          <EntitySet Name="ActionInfo" EntityType="Self.ActionInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartMent" EntityType="Self.DepartMent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_UserInfo_ActionInfo" EntityType="Self.R_UserInfo_ActionInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleInfo" EntityType="Self.RoleInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userinfo" EntityType="Self.userinfo" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -33,14 +87,68 @@
           <Property Name="UserName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserPass" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RegTime" Type="DateTime" Precision="3" Nullable="false" />
-          <Property Name="DelFlag" Type="Byte" />
+          <Property Name="DelFlag" Type="Byte" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Sort" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Modified" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityContainer Name="hzclEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="userinfo" EntityType="Self.userinfo" />
+          <EntitySet Name="ActionInfo" EntityType="hzclModel.ActionInfo" />
+          <EntitySet Name="DepartMent" EntityType="hzclModel.DepartMent" />
+          <EntitySet Name="RoleInfo" EntityType="hzclModel.RoleInfo" />
+          <EntitySet Name="R_UserInfo_ActionInfo" EntityType="hzclModel.R_UserInfo_ActionInfo" />
         </EntityContainer>
+        <EntityType Name="ActionInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegTime" Type="DateTime" Precision="3" />
+          <Property Name="DelFlag" Type="Int16" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HttpMethod" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ActionMethodName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActionTypeName" Type="Int16" />
+          <Property Name="MenuIcon" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IconWeidth" Type="Int32" />
+          <Property Name="IconHeight" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DepartMent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="TreePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Level" Type="Int32" />
+          <Property Name="IsLeaf" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="RoleInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int16" />
+          <Property Name="RegTime" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="sort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="R_UserInfo_ActionInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserInfoID" Type="Int32" />
+          <Property Name="ActionInfoID" Type="Int32" />
+          <Property Name="IsPass" Type="Int16" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -57,6 +165,60 @@
                 <ScalarProperty Name="RegTime" ColumnName="RegTime" />
                 <ScalarProperty Name="UserPass" ColumnName="UserPass" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActionInfo">
+            <EntityTypeMapping TypeName="hzclModel.ActionInfo">
+              <MappingFragment StoreEntitySet="ActionInfo">
+                <ScalarProperty Name="IconHeight" ColumnName="IconHeight" />
+                <ScalarProperty Name="IconWeidth" ColumnName="IconWeidth" />
+                <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+                <ScalarProperty Name="ActionTypeName" ColumnName="ActionTypeName" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ActionMethodName" ColumnName="ActionMethodName" />
+                <ScalarProperty Name="HttpMethod" ColumnName="HttpMethod" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartMent">
+            <EntityTypeMapping TypeName="hzclModel.DepartMent">
+              <MappingFragment StoreEntitySet="DepartMent">
+                <ScalarProperty Name="IsLeaf" ColumnName="IsLeaf" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="TreePath" ColumnName="TreePath" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleInfo">
+            <EntityTypeMapping TypeName="hzclModel.RoleInfo">
+              <MappingFragment StoreEntitySet="RoleInfo">
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_UserInfo_ActionInfo">
+            <EntityTypeMapping TypeName="hzclModel.R_UserInfo_ActionInfo">
+              <MappingFragment StoreEntitySet="R_UserInfo_ActionInfo">
+                <ScalarProperty Name="IsPass" ColumnName="IsPass" />
+                <ScalarProperty Name="ActionInfoID" ColumnName="ActionInfoID" />
+                <ScalarProperty Name="UserInfoID" ColumnName="UserInfoID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

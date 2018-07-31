@@ -51,8 +51,18 @@
   <ItemGroup>
     <Compile Include="AbstractFactory.cs" />
     <Compile Include="DBSession.cs" />
+    <Compile Include="Dbsession1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Dbsession.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBSessionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpelDalFacotry.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SimpelDalFacotry.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\hzcl.OA.DAL\hzcl.OA.DAL.csproj">
@@ -71,6 +81,19 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dbsession.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Dbsession1.cs</LastGenOutput>
+    </Content>
+    <Content Include="SimpelDalFacotry.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SimpelDalFacotry.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

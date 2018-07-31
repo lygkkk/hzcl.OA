@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace hzcl.OA.IDAL
 {
-    public interface IUserInfoDal : IBaseDal<userinfo>
+    public partial interface IUserInfoDal : IBaseDal<userinfo>
     {
         //定义自己特有的方法
     }

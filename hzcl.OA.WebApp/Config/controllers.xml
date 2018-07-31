@@ -8,8 +8,10 @@
   <object  type="hzcl.OA.WebApp.Controllers.LoginController, hzcl.OA.WebApp" singleton="false" >
     <property name="userInfoService" ref="UserInfoService" />
   </object>
-  
-  
+
+  <object  type="hzcl.OA.WebApp.Controllers.RoleInfoController, hzcl.OA.WebApp" singleton="false" >
+    <property name="RoleInfoService" ref="RoleInfoService" />
+  </object>
   
 
   <!--<object name="UserInfoService" type="hzcl.OA.BLL.UserInfoService, hzcl.OA.BLL" singleton="false"></object>-->

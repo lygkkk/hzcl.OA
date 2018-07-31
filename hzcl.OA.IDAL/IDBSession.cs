@@ -3,10 +3,10 @@ using hzcl.OA.Model;
 
 namespace hzcl.OA.IDAL
 {
-    public interface IDBSession
+    public partial interface IDBSession
     {
         DbContext DbContext { get; }
-        IUserInfoDal UserInfoDal { get; set; }
+        //IUserInfoDal UserInfoDal { get; set; }
         bool SaveChanges();
     }
 }
